@@ -1,1 +1,7 @@
-
+{provider: duckduckgo, customProviders [
+  {
+    name: radio
+    url: "https://ici.radio-canada.ca/recherche?pageNumber=1&q=%s&sort=-relevance"
+    tags: [news]
+  }
+]}

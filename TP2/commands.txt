@@ -1,0 +1,10 @@
+docker build -t inf1070-tp2 -f remise/Dockerfile .
+
+docker run -it --name s-commande --mount type=bind,source="$(pwd)"/remise/config,target=/root/.config/s/config,readonly b00d4f3debd4
+
+s covid -p radio -b /usr/bin/elinks
+
+docker run -it --name s-console \
+    --mount type=bind,source="$(pwd)"/remise/config,target=/root/.config/s/config,readonly \
+    --mount type=bind,source="$(pwd)"/remise/bashrc,target=/root/.bashrc,readonly \
+    b00d4f3debd4
