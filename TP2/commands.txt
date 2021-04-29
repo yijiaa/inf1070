@@ -1,9 +1,23 @@
+create docker image:
 docker build -t inf1070-tp2 -f remise/Dockerfile .
 
-docker run -it --name s-commande --mount type=bind,source="$(pwd)"/remise/config,target=/root/.config/s/config,readonly b00d4f3debd4
+list all images:
+sudo docker images
 
+create s-commande contianer:
+docker run -it --name s-commande --mount type=bind,source="$(pwd)"/remise/config,target=/root/.config/s/config,readonly inf1070-tp2
+
+delete a container:
+docker container rm s-commande
+docker container rm s-console
+
+search for "covid" on duckduckgo:
+s covid -b /usr/bin/elinks
+
+search for "covid" on radio canada (should open elinks in terminal):
 s covid -p radio -b /usr/bin/elinks
 
+create c-console container:
 docker run -it --name s-console \
     --mount type=bind,source="$(pwd)"/remise/config,target=/root/.config/s/config,readonly \
     --mount type=bind,source="$(pwd)"/remise/bashrc,target=/root/.bashrc,readonly \
